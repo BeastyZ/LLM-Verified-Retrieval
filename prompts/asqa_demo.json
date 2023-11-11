@@ -1,0 +1,132 @@
+{
+    "qa_pairs": [
+        {
+            "context": "Sounds of Silence is the second studio album by Simon & Garfunkel, released on January 17, 1966. The album's title is a slight modification of the title of the duo's first major hit, \"The Sound of Silence\", which originally was released as \"The Sounds of Silence\". The song had earlier been released in an acoustic version on the album \"Wednesday Morning, 3 A.M.\", and later on the soundtrack to the movie \"The Graduate\". Without the knowledge of Paul Simon or Art Garfunkel, electric guitars, bass and drums were overdubbed by Columbia Records staff producer Tom Wilson on June 15, 1965. This new version was released as a single in September 1965, and opens the album.",
+            "question": "Who is the original artist of sound of silence, the song, released in 1964?",
+            "short_answers": [
+                "Simon & Garfunkel",
+                "Paul Simon and Art Garfunkel",
+                "Art Garfunkel",
+                "Paul Simon"
+            ],
+            "wikipage": "Sounds of Silence"
+        },
+        {
+            "context": "Sounds of Silence is the second studio album by Simon & Garfunkel, released on January 17, 1966. The album's title is a slight modification of the title of the duo's first major hit, \"The Sound of Silence\", which originally was released as \"The Sounds of Silence\". The song had earlier been released in an acoustic version on the album \"Wednesday Morning, 3 A.M.\", and later on the soundtrack to the movie \"The Graduate\". Without the knowledge of Paul Simon or Art Garfunkel, electric guitars, bass and drums were overdubbed by Columbia Records staff producer Tom Wilson on June 15, 1965. This new version was released as a single in September 1965, and opens the album.",
+            "question": "Who is the original artist of sound of silence, the album?",
+            "short_answers": [
+                "Simon & Garfunkel",
+                "Paul Simon and Art Garfunkel",
+                "Art Garfunkel",
+                "Paul Simon"
+            ],
+            "wikipage": "Sounds of Silence"
+        },
+        {
+            "context": "\"Sound of Silence\" is a song performed by Australian recording artist Dami Im. Written by Anthony Egizii and David Musumeci of DNA Songs, it is best known as Australia's entry at the Eurovision Song Contest 2016 which was held in Stockholm, Sweden, where it finished 2nd, receiving a total of 511 points. The song also won the Marcel Bezen\u00e7on Award in the composer category. The song was leaked on 10 March 2016, one day before its initial release date. It is Dami Im's fourth Australian top 20 hit and worldwide, it reached the top 40 in more than six countries after the Eurovision Song Contest 2016 Final.",
+            "question": "Who is the original artist of sound of silence, the song, released in 2016?",
+            "short_answers": [
+                "Dami Im"
+            ],
+            "wikipage": "Sound of Silence (Dami Im song)"
+        }
+    ],
+    "wikipages": [
+        {
+            "title": "The Sound of Silence",
+            "url": "https://en.wikipedia.org/wiki/The%20Sound%20of%20Silence"
+        },
+        {
+            "title": "Sounds of Silence",
+            "url": "https://en.wikipedia.org/wiki/Sounds%20of%20Silence"
+        },
+        {
+            "title": "Sound of Silence (Dami Im song)",
+            "url": "https://en.wikipedia.org/wiki/Sound%20of%20Silence%20%28Dami%20Im%20song%29"
+        }
+    ],
+    "annotations": [
+        {
+            "knowledge": [
+                {
+                    "content": "Wednesday Morning, 3 A.M. was re-released in January 1966 (to capitalize on their newly found radio success because of the overdubbing of the song \"The Sound of Silence\" in June 1965, adding electric guitars, bass guitar and a drum kit), and reached No. 30 on the Billboard 200...The album was produced by Tom Wilson and engineered by Roy Halee between March 10\u201331, 1964.",
+                    "wikipage": "Wednesday Morning, 3 A.M."
+                }
+            ],
+            "long_answer": " The original artist of the song sound of silence released in 1966 is Paul Simon and Art Garfunkel. The song had earlier been released in an acoustic version on the album \"Wednesday Morning, 3 A.M.\" which had been produced in 1964. In 2016, Australian recording artist Dami Im recorded a different song by the same name."
+        },
+        {
+            "knowledge": [
+                {
+                    "content": "A studio audition led to the duo signing a record deal with Columbia Records, and the original acoustic version of the song was recorded in March 1964 at Columbia Studios in New York City and included on their debut album, Wednesday Morning, 3 A.M.. Released on October 19, 1964,[2] the album was a commercial failure and led to the duo disbanding; Simon returned to England, and Art Garfunkel to his studies at Columbia University.",
+                    "wikipage": "The Sound of Silence"
+                }
+            ],
+            "long_answer": "There are several songs with the title \"Sound of Silence\". Sounds of Silence is the second studio album by Simon & Garfunkel, released on January 17, 1966. The album's title is a slight modification of the title of the duo's first major hit, \"The Sound of Silence\", which was recorded in March 1964 and originally was released as \"The Sounds of Silence\". Another \"Sound of Silence\" is a song performed by Australian recording artist Dami Im, and is best known as Australia's entry at the Eurovision Song Contest 2016."
+        }
+    ],
+    "sample_id": "7089015503030534342",
+    "question": "Who is the original artist of sound of silence?",
+    "docs": [
+        {
+            "id": "2627084",
+            "title": "The Sound of Silence",
+            "text": "The Sound of Silence \"The Sound of Silence\", originally \"The Sounds of Silence\", is a song by the American music duo Simon & Garfunkel. The song was written by Paul Simon over a period of several months in 1963 and 1964. A studio audition led to the duo signing a record deal with Columbia Records, and the song was recorded in March 1964 at Columbia Studios in New York City for inclusion on their debut album, \"Wednesday Morning, 3 A.M.\". Released in October 1964, the album was a commercial failure and led to the duo breaking apart, with Paul Simon",
+            "score": 0.80078125,
+            "summary": "The original artist of \"The Sound of Silence\" is Simon & Garfunkel.",
+            "extraction": "\"The Sound of Silence\" is a song by the American music duo Simon & Garfunkel. The song was written by Paul Simon.",
+            "summary_no_sub": "Who is the original artist of sound of silence? The original artist of \"The Sound of Silence\" is Simon & Garfunkel.",
+            "summary_use_sub": "\"The Sound of Silence\" is a song by Simon & Garfunkel, written by Paul Simon in 1963-64. It was recorded in March 1964 for their debut album \"Wednesday Morning, 3 A.M.\" which was released in October 1964.",
+            "answer_no_sub": "The original artist of \"The Sound of Silence\" is Simon & Garfunkel.",
+            "answer_use_sub": "Original artist of sound of silence, the song, released in 1964: Simon & Garfunkel Original artist of sound of silence, the album: Simon & Garfunkel's debut album \"Wednesday Morning, 3 A.M.\" Original artist of sound of silence, the song, released in 2016: irrelevant"
+        },
+        {
+            "id": "10996254",
+            "title": "Sounds of Silence",
+            "text": "Sounds of Silence Sounds of Silence is the second studio album by Simon & Garfunkel, released on January 17, 1966. The album's title is a slight modification of the title of the duo's first major hit, \"The Sound of Silence\", which originally was released as \"The Sounds of Silence\". The song had earlier been released in an acoustic version on the album \"Wednesday Morning, 3 A.M.\", and later on the soundtrack to the movie \"The Graduate\". Without the knowledge of Paul Simon or Art Garfunkel, electric guitars, bass and drums were overdubbed by Columbia Records staff producer Tom Wilson on",
+            "score": 0.78955078125,
+            "summary": "The document mentions that \"The Sound of Silence\" is a song by Simon & Garfunkel and was released in an acoustic version on the album \"Wednesday Morning, 3 A.M.\" before being overdubbed with electric guitars, bass, and drums. However, it does not state the original artist of the song.",
+            "extraction": "\"The original artist of Sound of Silence is Simon & Garfunkel.\"",
+            "summary_no_sub": "Who is the original artist of sound of silence? The document mentions that \"The Sound of Silence\" was a major hit by Simon & Garfunkel, but does not mention the original artist. Therefore, the answer is \"irrelevant\".",
+            "summary_use_sub": "Who is the original artist of sound of silence, the song, released in 1964? - The original artist of \"The Sound of Silence\" song released in 1964 is Simon & Garfunkel. Who is the original artist of sound of silence, the album? - The original artist of \"Sounds of Silence\" album is Simon & Garfunkel. Who is the original artist of sound of silence, the song, released in 2016? - irrelevant.",
+            "answer_no_sub": "The original artist of \"The Sound of Silence\" is Simon & Garfunkel.",
+            "answer_use_sub": "Who is the original artist of sound of silence, the song, released in 1964? - The original artist of \"The Sound of Silence\" song released in 1964 is Simon & Garfunkel. Who is the original artist of sound of silence, the album? - The album \"Sounds of Silence\" is also by Simon & Garfunkel. Who is the original artist of sound of silence, the song, released in 2016? - Irrelevant."
+        },
+        {
+            "id": "10996258",
+            "title": "Sounds of Silence",
+            "text": "Angeles, California. \"The Sound of Silence\" (electric overdubs) personnel \"The Sound of Silence\" overdubs were recorded at Columbia's \"Studio A\" at 799 Seventh Avenue near 52nd Street by Columbia Records staff producer Tom Wilson on June 15, 1965. Sounds of Silence Sounds of Silence is the second studio album by Simon & Garfunkel, released on January 17, 1966. The album's title is a slight modification of the title of the duo's first major hit, \"The Sound of Silence\", which originally was released as \"The Sounds of Silence\". The song had earlier been released in an acoustic version on the album",
+            "score": 0.7705078125,
+            "summary": "\"The Sound of Silence\" was recorded by Simon & Garfunkel and produced by Tom Wilson on June 15, 1965. The song was originally released as \"The Sounds of Silence\" and later appeared on the album \"Sounds of Silence\" in January 1966.",
+            "extraction": "\"The original artist of Sound of Silence is Simon & Garfunkel.\"",
+            "summary_no_sub": "The document provides information about the recording of \"The Sound of Silence\" in 1965 and the release of the album \"Sounds of Silence\" by Simon & Garfunkel in 1966. However, it does not mention the original artist of \"The Sound of Silence.\"",
+            "summary_use_sub": "The document provides information about the recording of \"The Sound of Silence\" song in 1965 and the release of the \"Sounds of Silence\" album in 1966 by Simon & Garfunkel. It does not mention any release of the song in 2016. The original artist of the song and album is Simon & Garfunkel.",
+            "answer_no_sub": "The original artist of \"The Sound of Silence\" is Simon & Garfunkel.",
+            "answer_use_sub": "Original artist of sound of silence, the song, released in 1964 is irrelevant as the document only mentions the recording of the electric overdubs of the song in 1965. The original artist of sound of silence, the album, is Simon & Garfunkel. The original artist of sound of silence, the song, released in 2016 is irrelevant as the document only mentions the original release of the song in an acoustic version on an album."
+        },
+        {
+            "id": "364634",
+            "title": "Simon & Garfunkel",
+            "text": "Simon & Garfunkel Simon & Garfunkel were an American folk rock duo consisting of singer-songwriter Paul Simon and singer Art Garfunkel. They were one of the bestselling music groups of the 1960s and became counterculture icons of the decade's social revolution, alongside artists such as the Beatles, the Beach Boys, and Bob Dylan. Their biggest hits\u2014including \"The Sound of Silence\" (1964), \"Mrs. Robinson\" (1968), \"The Boxer\" (1969), and \"Bridge over Troubled Water\" (1970)\u2014reached number one on singles charts worldwide. The duo met in elementary school in Queens, New York, in 1953, where they learned to harmonize together and began writing",
+            "score": 0.7490234375,
+            "summary": "The document mentions Simon & Garfunkel as an American folk rock duo consisting of Paul Simon and Art Garfunkel. They were famous for their hits, including \"The Sound of Silence\" (1964), which reached number one on singles charts worldwide.",
+            "extraction": "\"The original artist of Sound of Silence is Simon & Garfunkel, an American folk rock duo consisting of singer-songwriter Paul Simon and singer Art Garfunkel.\"",
+            "summary_no_sub": "The document is irrelevant to the question.",
+            "summary_use_sub": "Simon & Garfunkel were an American folk rock duo consisting of Paul Simon and Art Garfunkel. They released the song \"The Sound of Silence\" in 1964, which became one of their biggest hits. The document does not mention the album or the artist who released the song in 2016.",
+            "answer_no_sub": "The original artist of \"Sound of Silence\" is Simon & Garfunkel.",
+            "answer_use_sub": "Who is the original artist of sound of silence, the song, released in 1964? - Simon & Garfunkel Who is the original artist of sound of silence, the album? - irrelevant Who is the original artist of sound of silence, the song, released in 2016? - irrelevant"
+        },
+        {
+            "id": "8156383",
+            "title": "Simon & Garfunkel discography",
+            "text": "Simon & Garfunkel discography Simon & Garfunkel, an American singer-songwriter duo, has released five studio albums, fifteen compilation albums, four live albums, one extended play, 26 singles, one soundtrack, and four box sets since 1964. Paul Simon and Art Garfunkel first formed a duo in 1957 as Tom & Jerry, before separating and later reforming as Simon & Garfunkel. Simon & Garfunkel's debut album, \"Wednesday Morning, 3 A.M.\", was released on October 19, 1964. Initially a flop, it was re-released two years later with the new version of the single \"The Sound of Silence\", which was overdubbed with electric instruments",
+            "score": 0.72314453125,
+            "summary_no_sub": "Who is the original artist of sound of silence? Simon & Garfunkel, an American singer-songwriter duo, released \"The Sound of Silence\" in 1964.",
+            "summary_use_sub": "Simon & Garfunkel, a singer-songwriter duo, released \"The Sound of Silence\" as a single in 1964. The album it was featured on was \"Wednesday Morning, 3 A.M.\" There is no mention of a release of the song in 2016.",
+            "answer_no_sub": "The original artist of \"The Sound of Silence\" is Simon & Garfunkel.",
+            "answer_use_sub": "Original artist of sound of silence, the song, released in 1964: Simon & Garfunkel Original artist of sound of silence, the album: Simon & Garfunkel (the album is not mentioned in the document, but the song was included in their debut album \"Wednesday Morning, 3 A.M.\") Original artist of sound of silence, the song, released in 2016: irrelevant"
+        }
+    ],
+    "answer": "There are several songs with the title \"Sound of Silence\". Sounds of Silence is the second studio album by Simon & Garfunkel, released on January 17, 1966. The album's title is a slight modification of the title of the duo's first major hit, \"The Sound of Silence\", which was recorded in March 1964 and originally was released as \"The Sounds of Silence\". Another \"Sound of Silence\" is a song performed by Australian recording artist Dami Im, and is best known as Australia's entry at the Eurovision Song Contest 2016.",
+    "judgment": "[YES]"
+}

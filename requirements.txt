@@ -1,0 +1,13 @@
+accelerate==0.22.0
+faiss-cpu==1.7.4
+FlagEmbedding==1.1.0
+openai==0.27.4
+sentence-transformers==2.2.2
+sentencepiece==0.1.99
+tiktoken==0.5.1
+tokenizers==0.13.3
+torch==2.0.1
+torchvision==0.15.2
+tqdm==4.45.0
+transformers==4.33.2
+pyserini==0.22.0

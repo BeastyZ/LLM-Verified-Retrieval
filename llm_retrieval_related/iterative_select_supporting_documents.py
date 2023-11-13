@@ -2,8 +2,6 @@ import copy
 import threading
 import tqdm
 import openai
-# For LLM select
-openai.api_base = "https://api.chatanywhere.com.cn/v1"
 from transformers import AutoTokenizer
 import time
 from typing import List, Dict, Tuple, Union
@@ -14,11 +12,6 @@ logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
 gpt2_tokenizer = AutoTokenizer.from_pretrained('gpt2')
-
-
-# stage1_retrieve_system_prompt = ''.join(open('llm_retrieval_prompt_drafts/prompt3_only_retrieve.md').readlines())
-# stage2_select_system_prompt = ''.join(
-#     open('llm_retrieval_prompt_drafts/prompt4_select_supporting_documents.md').readlines())
 
 
 def truncate_doc_in_user_prompt(user_prompt):
@@ -61,14 +54,14 @@ def int_to_letter_lower(n):
     if 0 <= n <= 25:
         return chr(n + ord('a'))
     else:
-        raise ValueError('输入的整数必须在0到25之间')
+        raise ValueError('The entered integer must be between 0 and 25')
 
 
 def int_to_letter_upper(n):
     if 0 <= n <= 25:
         return chr(n + ord('A'))
     else:
-        raise ValueError('输入的整数必须在0到25之间')
+        raise ValueError('The entered integer must be between 0 and 25')
 
 
 def create_stage2_select_prompt(questions: List[str], 
@@ -83,9 +76,9 @@ def create_stage2_select_prompt(questions: List[str],
     Args
     ----
     questions: List[str]
-
+        The question.
     docs: List
-
+        The documents relevant to the question
     k: int
         A specified number of documents for answering the user's specific question(s).
     idf_use_letter: str
@@ -149,11 +142,11 @@ def select_k_supporting_documents(questions: List[str],
     Args
     ----
     questions: List[str]
-
+        The question.
     tmp_selected_docs: List
-
+        pass
     extra_docs_to_browse: List[Dict]
-
+        pass
     k: int
         A specified number of documents for answering the user's specific question(s).
     selected_doc_first: int
@@ -169,10 +162,7 @@ def select_k_supporting_documents(questions: List[str],
     used_doc_field_in_retrieval: str
         Which filed of document to use.
     thread: "instance"
-
-    Returns
-    -------
-
+        pass
     """
     unbrowsed_docs = []
 
@@ -184,7 +174,6 @@ def select_k_supporting_documents(questions: List[str],
         else:
             docs_concat = extra_docs_to_browse + tmp_selected_docs
         messages = create_stage2_select_prompt(questions, docs_concat, k, idf_use_letter, use_title, stage2_select_system_prompt, used_doc_field_in_retrieval)
-        # logger.warning(f"user content: \n{messages[1]['content']}")
         prompt_token_num = len(gpt2_tokenizer.tokenize(messages[0]['content'] + messages[1]['content']))
         if prompt_token_num > 3900:
             unbrowsed_docs.insert(0, extra_docs_to_browse[-1])
@@ -192,23 +181,16 @@ def select_k_supporting_documents(questions: List[str],
         else:
             break
         if len(extra_docs_to_browse) == 0:
-            # return tmp_selected_docs
             break
 
     final_docs_in_query = [docs_concat]
-
-    # final_docs_in_query_dict = {}
-    # final_docs_in_query_dict['tmp_selected_docs'] = tmp_selected_docs
-    # final_docs_in_query_dict['extra_docs_to_browse'] = extra_docs_to_browse
-    # final_docs_in_query_dict['unbrowsed_docs'] = unbrowsed_docs
 
     if len(unbrowsed_docs) > 0:
         logger.info('before openai query, unbrowsed_docs > 0 : {}'.format(len(unbrowsed_docs)))
 
     def repeat_until_success_call_openai_api(func):
         def wrapper(*args, **kw):
-            # print('kw: {}'.format(kw.keys()))
-            while 1:
+            while True:
                 result = None
                 try:
                     result = func(*args, **kw)
@@ -270,7 +252,6 @@ def select_k_supporting_documents(questions: List[str],
                         final_docs_in_query[0] = docs_concat
                         messages = create_stage2_select_prompt(questions, docs_concat, k, idf_use_letter, use_title, stage2_select_system_prompt, used_doc_field_in_retrieval)
                         print('in repeat_until_success_call_openai_api, docs < 20 : {}'.format(len(docs_concat)))
-                        # len()
                         kw['messages'] = messages
 
                 except openai.error.OpenAIError as e:
@@ -368,7 +349,6 @@ def iterative_select_supporting_documents_single(alce_item: Dict,
                                                  thread: "instance", 
                                                  use_sub_questions: int=0, 
                                                  old_selected_docs: List[Dict]=None,
-                                                #  position: Literal["head", "tail"]=None,
                                                  position: str=None,
                                                  doc_num: int=100) -> Dict:
     """Iteratively select supporting documents.

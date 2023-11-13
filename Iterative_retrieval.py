@@ -8,24 +8,25 @@ import json
 import os
 import concurrent.futures
 import threading
-from typing import List, Dict, Tuple
+from typing import List, Dict
 from tqdm import tqdm
 import openai
 import time
 import csv
 import numpy as np
 import torch
-import re
 
 from openai_account_manager import get_account_manager
-from retrieval import update_query, load_embeddings, save_embeddings
+from utils import (
+    load_embeddings,
+    save_embeddings,
+    get_demonstration,
+    get_messages as get_messages_field
+)
 from llm_retrieval_related.iterative_select_supporting_documents import (
     create_stage2_select_prompt as get_messages,
     iterative_select_supporting_documents_multi_thread
 )
-from filter import get_demonstration
-from gen_used_field import get_messages as get_messages_field
-
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -255,6 +256,25 @@ def bm25_sphere_retrieval(data: List[Dict], system_prompt: str=None, args: objec
             for future in tqdm(concurrent.futures.as_completed(futures), total=len(futures)):
                 future.result()
 
+    else:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=args.thread_num) as executor:
+            futures = []
+            for d in data:
+                questions = d["question"]
+                user_query = f'Please write a passage to answer the question.\nQuestion: {questions}\nPassage: '
+
+                future = executor.submit(
+                    update_query,
+                    user_query=user_query,
+                    system_prompt="You are a helpful assistant.",
+                    model=args.openai_model_name,
+                    d=d,
+                )
+                futures.append(future)
+
+            for future in tqdm(concurrent.futures.as_completed(futures), total=len(futures)):
+                future.result()
+
 
 def bge_wiki_retrieval(data: List[Dict], system_prompt: str=None, args: object=None) -> None:
     """Use retriever of bge to do retrieval on the corpus of wiki.
@@ -409,7 +429,7 @@ if __name__ == "__main__":
     os.makedirs(filtration_dir, exist_ok=True)
     
     # Get OpenAI account manager
-    account_manager = get_account_manager(multi_thread=True)
+    account_manager = get_account_manager('openai_account_files/accounts.txt', 'openai_account_files/used.txt', multi_thread=True)
 
     if args.dataset_name == "eli5":
         logger.info("Load bm25 index (only sphere), this may take a while... ")
@@ -580,7 +600,7 @@ if __name__ == "__main__":
             filtration_system_prompt = ''.join(open('llm_retrieval_prompt_drafts/{}.md'.format(args.filtration_prompt_file)).readlines())
             if args.demo_file is not None:
                 logger.warning("Use demonstration for filtration.")
-                assert "with_demo" in args.filtration_prompt_file or args.filtration_prompt_file == "prompt14_score"
+                assert "with_demo" in args.filtration_prompt_file
                 
                 with open(args.demo_file) as f:
                     demo_data = json.load(f)
@@ -589,8 +609,6 @@ if __name__ == "__main__":
 
             if args.filtration_method == "judgment":
                 filtration_result = "judgment"
-            elif args.filtration_method == "threshold":
-                filtration_result = "score_gpt"
             else:
                 raise NotImplementedError
 
@@ -620,24 +638,6 @@ if __name__ == "__main__":
                 if args.filtration_method == "judgment":
                     if "[YES]" in d["judgment"]:
                         wanted_data.append(d)
-                    else:
-                        dropped_data.append(d)
-
-                # Use ScoreGPT
-                elif args.filtration_method == "threshold":
-                    score_gpt = d["score_gpt"]
-                    pattern = r"\[(.*?)\]"
-                    matches = re.findall(pattern, score_gpt) 
-                    if len(matches) == 1:
-                        try:
-                            score = float(matches[0])
-                            if score >= args.threshold:
-                                wanted_data.append(d)
-                            else:
-                                dropped_data.append(d)
-                        except:
-                            logger.warning("Cannot be converted to float.")
-                            dropped_data.append(d)
                     else:
                         dropped_data.append(d)
 

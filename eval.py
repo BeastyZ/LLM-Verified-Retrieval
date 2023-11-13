@@ -10,13 +10,11 @@ from nltk import sent_tokenize
 import numpy as np
 from rouge_score import rouge_scorer, scoring
 from tqdm import tqdm
-import sys
 import logging
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s - %(message)s',
                     datefmt='%m/%d/%Y %H:%M:%S')
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
-import time
 
 from transformers import (
     AutoModelForSeq2SeqLM,
@@ -274,13 +272,9 @@ def _run_nli_autoais(passage, claim):
     input_text = "premise: {} hypothesis: {}".format(passage, claim)
     inputs = autoais_tokenizer(input_text, return_tensors="pt").to('cuda')
 
-
-
-    # print('input_ids:{}'.format(inputs['input_ids'].size()))
-    # print(time.strftime('before generate: %Y-%m-%d %H:%M:%S', time.localtime(time.time())))
     with torch.inference_mode():
         outputs = autoais_model.generate(inputs['input_ids'], output_scores=True,max_new_tokens=10)
-    # print(time.strftime('finish generate: %Y-%m-%d %H:%M:%S', time.localtime(time.time())))
+
     result = autoais_tokenizer.decode(outputs[0], skip_special_tokens=True)
     inference = 1 if result == "1" else 0
     return inference
@@ -436,7 +430,7 @@ def compute_autoais(data,
         ))
 
     def calculate_f1(precision, recall):
-        if precision + recall == 0:  # 避免除以零的错误
+        if precision + recall == 0:
             return 0
         return 2 * (precision * recall) / (precision + recall)
 
@@ -585,8 +579,6 @@ def main():
         result["claims_nli"] = compute_claims(normalized_data)
     logger.info('eval_result:{}'.format(result))
 
-
-    # print(result)
     json.dump(result, open(args.f.replace("json", "score"), "w"), indent=4)
 
 

@@ -3,7 +3,6 @@ import torch.multiprocessing as mp
 import queue
 import math
 import json
-import argparse
 import time
 import logging
 from pyserini.search import LuceneSearcher
@@ -85,17 +84,6 @@ class BM25MultiProcess():
                     'id':hit.docid
                 })
 
-            # For bm25 wiki
-            # docs = []
-            # for hit in hits:
-            #     docs.append({
-            #         "title": json.loads(hit.raw)['contents'].strip().split('\n')[0],
-            #         "text": json.loads(hit.raw)['contents'].strip().split('\n')[1],
-            #         "url": 'none',
-            #         'score': hit.score,
-            #         'id':hit.docid
-            #     })
-
             docs_list.append(docs)
             end_time = time.time()
             logger.warning(f"It took {end_time - start_time} seconds.")
@@ -151,41 +139,3 @@ class BM25MultiProcess():
 
         pool['input'].close()
         pool['output'].close()
-
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Passage retrieval.")
-    parser.add_argument("--retriever", type=str, required=True)
-    parser.add_argument("--method", type=str, default=None)
-    parser.add_argument('--doc_pool', choices=['sphere','wiki'])
-    parser.add_argument("--data_file", type=str, required=True, help="path to the data file")
-    parser.add_argument("--corpus_path", type=str, required=True, help="path to the corpus file")
-    parser.add_argument("--output_file", type=str, required=True, help="same format as the data file but with the new retrieved docs.")
-    parser.add_argument('--top_k', type=int, required=True)
-    args = parser.parse_args()
-
-    logger.info("Load data.")
-    with open(args.data_file) as f:
-        data = json.load(f)
-
-    queries = []
-    for d in data:
-        if args.method == "lamer":
-            queries.append(d["question"] + "\n" + d["lamer_query"])
-        elif args.method == "hyde":
-            queries.append(d["hyde_query"])
-        else:
-            raise NotImplementedError
-
-    logger.info("Start bm25 retrieval using multi-process.")
-    model = BM25MultiProcess(args.corpus_path)
-    pool = model.start_multi_process_pool(process_num=10)
-    docs_list = model.retrieve_multi_process(queries, pool)
-    model.stop_multi_process_pool(pool)
-
-    for i in range(len(data)):
-        data[i]["docs"] = docs_list[i]
-
-    logger.info('finish retrieve')
-    with open(args.output_file, "w") as f:
-        json.dump(data, f, indent=4)

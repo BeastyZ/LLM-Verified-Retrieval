@@ -6,7 +6,6 @@ import threading
 import tqdm
 from multi_thread_openai_api_call import MyThread
 
-# lock = threading.Lock()
 logger = logging.getLogger()
 
 
@@ -227,8 +226,6 @@ class OpenAI_Account_Manager_MultiThread_One_Acount_Many_Used:
             self.now_account_idx += 1
             self.now_account_idx = self.now_account_idx % len(self.all_account)
 
-            # self.using_account.append(self.all_account[0])
-            # del self.all_account[0]
             if last_empty_account != None:
                 self.record_empty_account(last_empty_account)
                 logger.info('Thread {} account: [{}, {}, {}] '
@@ -272,10 +269,19 @@ class OpenAI_Account_Manager_MultiThread_One_Acount_Many_Used:
         return available_num
 
 
-def get_account_manager(multi_thread: bool=False, limit_account_num: int=-1) -> Union[OpenAI_Account_Manager_MultiThread_One_Acount_Many_Used, OpenAI_Account_Manager]:
+def get_account_manager(
+    account_file: str, 
+    used_file: str, 
+    multi_thread: bool=False, 
+    limit_account_num: int=-1
+) -> Union[OpenAI_Account_Manager_MultiThread_One_Acount_Many_Used, OpenAI_Account_Manager]:
     """Get an instance of managing openai accounts.
     Args
     ----
+    account_file: str
+        The file containing available username, password and key of OpenAI API account.
+    used_file: str
+        The file containing unavailable username, password and key of OpenAI API account.
     multi_thread: bool=False
         Whether to use multi-thread or not.
     limit_account_num: int=-1
@@ -287,13 +293,9 @@ def get_account_manager(multi_thread: bool=False, limit_account_num: int=-1) -> 
         An instance of class OpenAI_Account_Manager_MultiThread_One_Acount_Many_Used or OpenAI_Account_Manager
     """
     if multi_thread:
-        result = OpenAI_Account_Manager_MultiThread_One_Acount_Many_Used('./openai_account_files/used.txt',
-                                                    './openai_account_files/account_09_09.txt',
-                                                    limit_account_num=limit_account_num
-                                                    )
+        result = OpenAI_Account_Manager_MultiThread_One_Acount_Many_Used(account_file, used_file, limit_account_num=limit_account_num)
     else:
-        result = OpenAI_Account_Manager('./openai_account_files/used.txt',
-                                        './openai_account_files/account_09_09.txt')
+        result = OpenAI_Account_Manager(account_file, used_file)
     return result
 
 
@@ -318,11 +320,8 @@ class OpenAI_API_inp_Manager_MultiThread:
         self.inference_hyper_parameter = inference_hyper_parameter
 
         for i in range(len(inference_hyper_parameter)):
-            # assert 'model' in inference_hyper_parameter[i], "{} th inference_hyper_parameter has no model"
             assert 'max_tokens' in inference_hyper_parameter[i], "{} th inference_hyper_parameter has no max_length"
-            # assert 'n' in inference_hyper_parameter[i], "{} th inference_hyper_parameter has no n"
-            # assert 'temperature' in inference_hyper_parameter[i], "{} th inference_hyper_parameter has no temperature"
-            # assert 'top_p' in inference_hyper_parameter[i], "{} th inference_hyper_parameter has no top_p"
+
 
     def get_next_gpt_idx_inp(self):
         with self.inp_lock:

@@ -123,10 +123,6 @@ def main():
     # Load the model or setup the API
     llm = LLM(args)
 
-    # logger.info('openai.key:{}'.format(openai.api_key))
-    # logger.info('line 229 exit, for debug')
-    # exit()
-    
     # Generate prompts
     np.random.seed(args.seed)
 
@@ -164,10 +160,8 @@ def main():
             eval_item, prompt=prompt_data["demo_prompt"], ndoc=args.ndoc, doc_prompt=prompt_data["doc_prompt"],
             instruction=prompt_data["instruction"], use_shorter=args.use_shorter, test=True, use_sub_questions=args.use_sub_questions
         )
-        # print(f"asqa_sub_questions:\n{eval_data[idx]['prompt']}")
         if args.use_shorter is not None:
             doc_list = get_shorter_text(eval_item, eval_item["docs"], args.ndoc, args.use_shorter)
-            #暂时没看懂上面一行
         else:
             doc_list = eval_item["docs"][:args.ndoc]
 
@@ -207,7 +201,6 @@ def main():
             assert args.turbo_system_message != None
             # For OpenAI's ChatGPT API, we need to convert text prompt to chat prompt
             item['prompt'] = [
-                # {'role': 'system', 'content': "You are a helpful assistant that answers the following questions with proper citations."},
                 {'role': 'system', 'content': args.turbo_system_message},
                 {'role': 'user', 'content': prompt}
             ]
@@ -223,7 +216,6 @@ def main():
 
     for idx, item in enumerate(tqdm(eval_data)):
         eval_data_openai_response = eval_data_openai_responses[idx]
-        # eval_data_openai_response 是 list，因为支持了
         for j, decoded_output in enumerate(eval_data_openai_response):
             decoded_output = decoded_output.replace("<|im_end|>", "").rstrip()
             if decoded_output.endswith("End."):

@@ -1,4 +1,4 @@
-# LLM-Verified Retrieval for Verifiable Text Generation
+# LLatrieval: LLM-Verified Retrieval for Verifiable Generation
 This repository contains the code and data for paper LLatrieval: LLM-Verified Retrieval for Verifiable Generation. This repository also includes code to reproduce the method we propose in our paper.
 
 

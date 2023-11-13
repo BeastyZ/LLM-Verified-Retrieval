@@ -9,7 +9,7 @@ openai_model_name=gpt-3.5-turbo-0301
 # Args for retrieval
 input_file=data/qampari_eval_gtr_top100.json
 retriever=bge-large-en-v1.5
-update_prompt_file=prompt12-update-using-missing-info-from-question-and-psgs
+update_prompt_file=update-using-missing-info-for-new_question
 update_query_using_missing_info_from_question_and_psgs=1
 corpus_path=/remote-home/ctzhu/paper_repro/ALCE/corpus/psgs_w100.tsv
 # Args for generating used field.
@@ -55,7 +55,7 @@ export CUDA_VISIBLE_DEVICES=0
 shot=1 
 openai_api=1 
 num_samples=1 
-data_file=iter_retrieval_50/qampari_final_data/final_data_bge-large-en-v1.5_max_iteration-4_prompt12-update-using-missing-info-from-question-and-psgs_head.json
+data_file=iter_retrieval_50/qampari_final_data/final_data_bge-large-en-v1.5_max_iteration-4_update-using-missing-info-for-new_question_head.json
 ndoc=5
 openai_multi_thread=10
 model=gpt-3.5-turbo-0301
@@ -125,7 +125,7 @@ openai_model_name=gpt-3.5-turbo-0301
 # Args for retrieval
 input_file=data/qampari_eval_gtr_top100.json
 retriever=bge-large-en-v1.5
-update_prompt_file=prompt13-update-using-missing-info-from-question-and-psgs
+update_prompt_file=update-using-missing-info-for-new-passage
 update_query_using_missing_info_from_question_and_psgs=1
 corpus_path=/remote-home/ctzhu/paper_repro/ALCE/corpus/psgs_w100.tsv
 # Args for generating used field.
@@ -171,7 +171,7 @@ export CUDA_VISIBLE_DEVICES=0
 shot=1 
 openai_api=1 
 num_samples=1 
-data_file=iter_retrieval_50/qampari_final_data/final_data_bge-large-en-v1.5_max_iteration-4_prompt13-update-using-missing-info-from-question-and-psgs_head.json
+data_file=iter_retrieval_50/qampari_final_data/final_data_bge-large-en-v1.5_max_iteration-4_update-using-missing-info-for-new-passage_head.json
 ndoc=5
 openai_multi_thread=10
 model=gpt-3.5-turbo-0301

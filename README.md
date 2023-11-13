@@ -1,5 +1,5 @@
 # LLM-Verified Retrieval for Verifiable Text Generation
-This repository contains the code and data for paper LLM-Verified Retrieval for Verifiable Text Generation. This repository also includes code to reproduce the method we propose in our paper.
+This repository contains the code and data for paper LLatrieval: LLM-Verified Retrieval for Verifiable Generation. This repository also includes code to reproduce the method we propose in our paper.
 
 
 ## Quick Links
@@ -61,7 +61,7 @@ For the Sphere and Wikipedia snapshot corpora, please refer to [ALCE](https://gi
 
 
 ## Reproduce Our Method
-**NOTE:** There must be raw data and a corpus for retrieval before running the following commands. Once you have them, you also need to modify the parameters of the corresponding files in the `command` directory.
+**NOTE:** There must be raw data and a corpus for retrieval before running the following commands. Once you have them, you also need to modify the parameters of the corresponding files in the `commands` directory.
 
 For ASQA, use the following command
 ```bash

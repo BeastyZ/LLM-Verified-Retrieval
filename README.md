@@ -1,5 +1,5 @@
 # LLatrieval: LLM-Verified Retrieval for Verifiable Generation
-This repository contains the code and data for paper LLatrieval: LLM-Verified Retrieval for Verifiable Generation. This repository also includes code to reproduce the method we propose in our paper.
+This repository contains the code and data for paper [LLatrieval: LLM-Verified Retrieval for Verifiable Generation](https://arxiv.org/abs/2311.07838). This repository also includes code to reproduce the method we propose in our paper.
 
 
 ## Quick Links
@@ -87,4 +87,13 @@ The result will be saved in `iter_retrieval_50/`.
 
 
 ## Citation
-Add the relevant information later
+```
+@misc{li2023llatrieval,
+      title={LLatrieval: LLM-Verified Retrieval for Verifiable Generation}, 
+      author={Xiaonan Li and Changtai Zhu and Linyang Li and Zhangyue Yin and Tianxiang Sun and Xipeng Qiu},
+      year={2023},
+      eprint={2311.07838},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+```

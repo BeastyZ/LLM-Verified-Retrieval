@@ -557,7 +557,7 @@ def iterative_select_supporting_documents_multi_thread(items_to_select: List[Dic
         for item in items_to_select:
             new_items_to_select.append({'alce_item': item, "old_selected_docs": question_to_docs[item["question"]]})
     idx_items_to_select = list(enumerate(new_items_to_select))  # List[Tuple(index, item)]
-    account_manager = get_account_manager(multi_thread=True)
+    account_manager = get_account_manager('openai_account_files/used.txt', 'openai_account_files/accounts.txt', multi_thread=True)
     inp_manager = OpenAI_API_inp_Manager_MultiThread_Generalized(idx_items_to_select, general_input)
 
     if use_tqdm:

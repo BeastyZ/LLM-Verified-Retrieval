@@ -429,7 +429,7 @@ if __name__ == "__main__":
     os.makedirs(filtration_dir, exist_ok=True)
     
     # Get OpenAI account manager
-    account_manager = get_account_manager('openai_account_files/accounts.txt', 'openai_account_files/used.txt', multi_thread=True)
+    account_manager = get_account_manager('openai_account_files/used.txt', 'openai_account_files/accounts.txt', multi_thread=True)
 
     if args.dataset_name == "eli5":
         logger.info("Load bm25 index (only sphere), this may take a while... ")

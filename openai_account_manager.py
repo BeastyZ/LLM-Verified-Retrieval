@@ -344,7 +344,7 @@ def openai_llm_generate_multi_thread(eval_data_openai_queries, llm, num_threads,
 
     inp_manager = OpenAI_API_inp_Manager_MultiThread(idx_x_list_to_decode, hyper_parameter)
     thread_list = []
-    account_manager = get_account_manager(1)
+    account_manager = get_account_manager('openai_account_files/used.txt', 'openai_account_files/accounts.txt', multi_thread=True)
     if use_tqdm:
         pbar = tqdm.tqdm(total=len(idx_x_list_to_decode))
     else:

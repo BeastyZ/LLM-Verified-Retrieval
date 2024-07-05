@@ -1,6 +1,11 @@
 # LLatrieval: LLM-Verified Retrieval for Verifiable Generation
 This repository contains the code and data for paper [LLatrieval: LLM-Verified Retrieval for Verifiable Generation](https://arxiv.org/abs/2311.07838). This repository also includes code to reproduce the method we propose in our paper.
 
+## :new:News
+- **[2024/03/13]** Our submission to NAACL 2024, LLatrieval: LLM-Verified Retrieval for Verifiable Generation, has been accepted to the main conference.
+- **[2023/11/14]** We have published the preprint version of the paper on [arXiv](https://arxiv.org/abs/2311.07838).
+- **[2023/11/09]** We have released the code for reproducing our method.
+
 
 ## Quick Links
 - [Requirements](#requirements)
@@ -88,12 +93,23 @@ The result will be saved in `iter_retrieval_50/`.
 
 ## Citation
 ```
-@misc{li2023llatrieval,
-      title={LLatrieval: LLM-Verified Retrieval for Verifiable Generation}, 
-      author={Xiaonan Li and Changtai Zhu and Linyang Li and Zhangyue Yin and Tianxiang Sun and Xipeng Qiu},
-      year={2023},
-      eprint={2311.07838},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+@inproceedings{li-etal-2024-llatrieval,
+    title = "{LL}atrieval: {LLM}-Verified Retrieval for Verifiable Generation",
+    author = "Li, Xiaonan  and
+      Zhu, Changtai  and
+      Li, Linyang  and
+      Yin, Zhangyue  and
+      Sun, Tianxiang  and
+      Qiu, Xipeng",
+    editor = "Duh, Kevin  and
+      Gomez, Helena  and
+      Bethard, Steven",
+    booktitle = "Proceedings of the 2024 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (Volume 1: Long Papers)",
+    month = jun,
+    year = "2024",
+    address = "Mexico City, Mexico",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2024.naacl-long.305",
+    pages = "5453--5471",
 }
 ```

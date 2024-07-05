@@ -2,7 +2,7 @@
 This repository contains the code and data for paper [LLatrieval: LLM-Verified Retrieval for Verifiable Generation](https://arxiv.org/abs/2311.07838). This repository also includes code to reproduce the method we propose in our paper.
 
 ## :new:News
-- **[2024/03/13]** Our submission to NAACL 2024, LLatrieval: LLM-Verified Retrieval for Verifiable Generation, has been accepted to the main conference.
+- **[2024/03/13]** Our submission to NAACL 2024, [LLatrieval: LLM-Verified Retrieval for Verifiable Generation](https://aclanthology.org/2024.naacl-long.305/), has been accepted to the main conference.
 - **[2023/11/14]** We have published the preprint version of the paper on [arXiv](https://arxiv.org/abs/2311.07838).
 - **[2023/11/09]** We have released the code for reproducing our method.
 

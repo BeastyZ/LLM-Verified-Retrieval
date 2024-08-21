@@ -30,27 +30,35 @@ This repository contains the code and data for paper [LLatrieval: LLM-Verified R
     ```
 
 ## Data
-We uploaded the data to [Hugging Face](https://huggingface.co/datasets/BeastyZ/LLM-Verified-Retrieval)🤗. 
+We uploaded the data to [Hugging Face](https://huggingface.co/datasets/BeastyZ/Llatrieval)🤗. 
 
 **Start by installing 🤗 Datasets:**
-```
+```bash
 pip install datasets
 ```
 
 **Load a dataset**
-```
-from datasets import load_dataset
 
-dataset = load_dataset("BeastyZ/LLM-Verified-Retrieval")
-```
-After downloading the data, you need to manually specify the data path. This may be a little difficult, so we recommend that you manually download the data from huaggingface to your current working directory. Perhaps you can refer to the following command
+This command will download the raw data to the `data/` folder.
 ```bash
-wget https://huggingface.co/datasets/BeastyZ/LLM-Verified-Retrieval/resolve/main/origin/asqa_eval_dpr_top100.json?download=true
+python download_data.py
 ```
 
-**NOTE**
+**Download corpus**
 
-For the Sphere and Wikipedia snapshot corpora, please refer to [ALCE](https://github.com/princeton-nlp/ALCE) for more information.
+Use the following command to download the `BM25_SPHERE_CORPUS`.
+```bash
+wget -P faiss_index https://dl.fbaipublicfiles.com/sphere/sphere_sparse_index.tar.gz
+tar -xzvf faiss_index/sphere_sparse_index.tar.gz -C faiss_index
+```
+
+Use the following command to download the `WIKI_TSV_CORPUS`.
+```bash
+wget https://dl.fbaipublicfiles.com/dpr/wikipedia_split/psgs_w100.tsv.gz
+gzip -xzvf psgs_w100.tsv.gz
+```
+
+For more info about the Sphere and Wikipedia snapshot corpora, please refer to [ALCE](https://github.com/princeton-nlp/ALCE).
 
 
 ## Code Structure

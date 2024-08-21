@@ -7,7 +7,7 @@ use_title=0
 used_doc_field=answer
 openai_model_name=gpt-3.5-turbo-0301
 # Args for retrieval
-input_file=PATH_TO_YOUR_OWN_DATA
+input_file=data/eli5_bm25_top100.json
 retriever=bm25
 update_prompt_file=update-using-missing-info-for-new-question
 update_query_using_missing_info_from_question_and_psgs=1
@@ -120,7 +120,7 @@ use_title=0
 used_doc_field=answer
 openai_model_name=gpt-3.5-turbo-0301
 # Args for retrieval
-input_file=PATH_TO_YOUR_OWN_DATA
+input_file=data/eli5_bm25_top100.json
 retriever=bm25
 update_prompt_file=update-using-missing-info-for-new-passage
 update_query_using_missing_info_from_question_and_psgs=1

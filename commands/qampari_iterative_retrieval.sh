@@ -7,7 +7,7 @@ use_title=0
 used_doc_field=summary
 openai_model_name=gpt-3.5-turbo-0301
 # Args for retrieval
-input_file=PATH_TO_YOUR_OWN_DATA
+input_file=data/qampari_gtr_top100.json
 retriever=bge-large-en-v1.5
 update_prompt_file=update-using-missing-info-for-new-question
 update_query_using_missing_info_from_question_and_psgs=1
@@ -122,7 +122,7 @@ use_title=0
 used_doc_field=summary
 openai_model_name=gpt-3.5-turbo-0301
 # Args for retrieval
-input_file=PATH_TO_YOUR_OWN_DATA
+input_file=data/qampari_gtr_top100.json
 retriever=bge-large-en-v1.5
 update_prompt_file=update-using-missing-info-for-new-passage
 update_query_using_missing_info_from_question_and_psgs=1

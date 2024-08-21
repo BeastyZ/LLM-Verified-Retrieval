@@ -460,6 +460,7 @@ if __name__ == "__main__":
                 p_embeddings = load_embeddings(f"./embedding/psgs_w100_embedding_{args.retriever}.pkl")
             else:
                 logger.info("Build embeddings.")
+                os.makedirs('./embedding', exist_ok=True)
                 p_embeddings = bge_retriever.encode(documents, batch_size=256)
                 save_embeddings(p_embeddings, f"./embedding/psgs_w100_embedding_{args.retriever}.pkl")
 
@@ -514,7 +515,19 @@ if __name__ == "__main__":
                 elif args.dataset_name == "qampari":
                     bge_wiki_retrieval(data, None, args)
                 elif args.dataset_name == "eli5":
-                    bm25_sphere_retrieval(data, None, args)
+                    # bm25_sphere_retrieval(data, None, args)
+                    queries = []
+                    for d in data:
+                        queries.append(d["question"])
+
+                    logger.info("Start bm25 retrieval using multi-process.")
+                    from multi_process.bm25_multi_process import BM25MultiProcess
+                    bm25_multiprocess = BM25MultiProcess(args.corpus_path)
+                    pool = bm25_multiprocess.start_multi_process_pool(process_num=15)
+                    docs_list = bm25_multiprocess.retrieve_multi_process(queries, pool)
+                    bm25_multiprocess.stop_multi_process_pool(pool)
+                    for i in range(len(data)):
+                        data[i]["docs"] = docs_list[i]
                 else:
                     raise NotImplementedError
                 
